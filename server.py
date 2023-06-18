@@ -1,9 +1,9 @@
 import openai
 from flask import Flask, jsonify, request
 
-openai.api_key = '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'
+openai.api_key = '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'
 
-app = Flask("server")
+app = Flask(__name__)
 
 
 @app.route('/upload', methods=['POST'])

@@ -1,15 +1,13 @@
 import os
 
-os.environ["OPENAI_API_KEY"] = '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'
+os.environ["OPENAI_API_KEY"] = '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'
 
 from llama_index import (  # LLMPredictor,; ServiceContext
     SimpleDirectoryReader, VectorStoreIndex)
 
 # from langchain.chat_models import ChatOpenAI
 
-document = SimpleDirectoryReader('examples/paul_graham_essay/metamorphosis').load_data()
-document1 = SimpleDirectoryReader('examples/paul_graham_essay/empty').load_data()
-documents = [document[0], document1[0]]
+documents = SimpleDirectoryReader('hi.txt').load_data()
 
 # llm_predictor = LLMPredictor(llm=ChatOpenAI(temperature=0, model_name="text-davinci-003"))
 # service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor)
