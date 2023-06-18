@@ -2,6 +2,9 @@
 
 GIT_ROOT ?= $(shell git rev-parse --show-toplevel)
 
+clean:
+	find ./input -type f -delete
+
 format:
 	black .
 
@@ -16,3 +19,4 @@ test:
 # Docs
 watch-docs: ## Build and watch documentation
 	sphinx-autobuild docs/ docs/_build/html --open-browser --watch $(GIT_ROOT)/llama_index/
+

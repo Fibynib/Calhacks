@@ -1,70 +1,73 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Test Question Generator</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-      }
 
-      h1 {
-        text-align: center;
-      }
+<head>
+  <title>Test Question Generator</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
 
-      #upload-form {
-        margin-bottom: 20px;
-      }
+    h1 {
+      text-align: center;
+    }
 
-      #question-section {
-        display: none;
-        margin-top: 20px;
-      }
+    #upload-form {
+      margin-bottom: 20px;
+    }
 
-      #generated-questions {
-        font-family: Arial, sans-serif;
-        font-size: 16px;
-        line-height: 1.5;
-        color: #333;
-        padding: 20px;
-        background-color: #f5f5f5;
-        border-radius: 4px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
+    #question-section {
+      display: none;
+      margin-top: 20px;
+    }
 
-      /* Styling for the file upload input and button */
-      #file-input {
-        display: none;
-        /* Hide the default file input appearance */
-      }
+    #generated-questions {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #333;
+      padding: 20px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-      #upload-form button {
-        background-color: #4caf50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-      }
+    /* Styling for the file upload input and button */
+    #file-input {
+      display: none;
+      /* Hide the default file input appearance */
+    }
 
-      #upload-form button:hover {
-        background-color: #45a049;
-      }
-    </style>
-  </head>
+    #upload-form button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
 
-  <body>
-    <h1>Test Question Generator</h1>
-    <form method="POST" action="/quiz" enctype="multipart/form-data">
-      <input type="file" name="file" accept=".txt" multiple />
-      <input type="submit" value="Upload" />
-    </form>
+    #upload-form button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
 
-    <div id="questionSection">
-      <h2>Generated Questions:</h2>
-      <ul id="questionList">
-        <!-- Generated questions will be dynamically added here -->
-      </ul>
-    </div>
-  </body>
+<body>
+  <h1>Test Question Generator</h1>
+  <form method="POST" action="/quiz" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".txt" multiple />
+    <input type="submit" value="Upload" />
+  </form>
+
+  <div id="questionSection">
+    <h2>Generated Questions:</h2>
+    <ul id="questionList">
+      <!-- Generated questions will be dynamically added here -->
+    </ul>
+  </div>
+</body>
+
 </html>
