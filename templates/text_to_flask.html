@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Question Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #upload-form {
+      margin-bottom: 20px;
+    }
+
+    #question-section {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #generated-questions {
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+
+    /* Styling for the file upload input and button */
+    #file-input {
+      display: none; /* Hide the default file input appearance */
+    }
+
+    #upload-form button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #upload-form button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Test Question Generator</h1>
+  <form method="POST" action="/upload" enctype="multipart/form-data">
+    <input type="file" name='file' accept=".txt" multiple>
+    <input type="submit" value="Upload">
+  </form>
+
+  <div id="questionSection">
+    <h2>Generated Questions:</h2>
+    <ul id="questionList">
+      <!-- Generated questions will be dynamically added here -->
+    </ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
