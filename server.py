@@ -1,7 +1,7 @@
-from flask import Flask
-from flask import request
-
 import openai
+
+from flask import Flask, request
+
 openai.api_key = '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'
 
 app = Flask("flask server")
@@ -26,6 +26,6 @@ def upload_file():
     questions = [choice['text'].strip() for choice in response['choices']]
 
     # Return the generated questions as a JSON response
-    return {'questions': questions}
+    print ({'questions': questions})
 
 
