@@ -1,10 +1,9 @@
-from flask import Flask
-from flask import request
-
 import openai
-openai.api_key = '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'
+from flask import Flask, jsonify, request
 
-app = Flask("flask server")
+openai.api_key = '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'
+
+app = Flask("server")
 
 
 @app.route('/upload', methods=['POST'])
@@ -26,6 +25,6 @@ def upload_file():
     questions = [choice['text'].strip() for choice in response['choices']]
 
     # Return the generated questions as a JSON response
-    return {'questions': questions}
+    return jsonify({'questions': questions})
 
 
