@@ -2,10 +2,15 @@ import os
 
 from flask import Flask, render_template, request
 
-os.environ["OPENAI_API_KEY"] = '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'
-
+os.environ["OPENAI_API_KEY"] = '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'
 from llama_index import (  # LLMPredictor,; ServiceContext
     SimpleDirectoryReader, VectorStoreIndex)
+
+global query_engine
+
+class Riddler():
+    answer = None
+    history = None
 
 app = Flask(__name__)
 
@@ -27,16 +32,17 @@ def upload():
 
     index = VectorStoreIndex.from_documents(documents) #, service_context=service_context)
 
-
     query_engine = index.as_query_engine()
 
-    question = "Give a 4-choice multiple choice question without the answer about this topic in the following format: Question,option1,option2,option3,option4"
+    question = "Give a 4-choice multiple choice question on this text in the following format: Question`option1`option2`option3`option4`answer. \
+                Give the answer as a if the first option is right, b if the second option is right, c if the third option is right, and d if the fourth option is right."
 
     prompt = question
 
     response = query_engine.query(prompt)
-    response_list = str(response).split(",")
+    response_list = str(response).split("`")
     print(response_list)
+    Riddler.answer = response_list[5]
     # history = history + \
     #        "They asked " + question + "\n" + \
     #        "You responded with " + str(response) + "\n"
@@ -56,6 +62,18 @@ def upload():
         option3=response_list[3],
         option4=response_list[4]
     )
+
+@app.route('/answer', methods=['POST'])
+def show_results():
+    choice = request.form['question1']
+    print(choice)
+    
+    if choice == str(Riddler.answer):
+        message = "Happy birthday"
+    else:
+        message = "The right answer is not you"
+
+    return message
 
 if __name__ == '__main__':
     app.run()
