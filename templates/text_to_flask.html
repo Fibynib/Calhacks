@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Test Question Generator</title>
   <style>
@@ -28,7 +29,8 @@
 
     /* Styling for the file upload input and button */
     #file-input {
-      display: none; /* Hide the default file input appearance */
+      display: none;
+      /* Hide the default file input appearance */
     }
 
     #upload-form button {
@@ -45,6 +47,7 @@
     }
   </style>
 </head>
+
 <body>
   <h1>Test Question Generator</h1>
   <form method="POST" action="/upload" enctype="multipart/form-data">
@@ -59,6 +62,41 @@
     </ul>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    const form = document.querySelector('#upload-form');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('/upload', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to upload file');
+        }
+
+        const data = await response.json();
+        const questions = data.questions;
+
+        // Update the UI with the generated questions
+        const questionSection = document.getElementById('question-section');
+        questionSection.innerHTML = '';
+
+        questions.forEach((question) => {
+          const questionElement = document.createElement('p');
+          questionElement.textContent = question;
+          questionSection.appendChild(questionElement);
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    });
+  </script>
 </body>
+
 </html>

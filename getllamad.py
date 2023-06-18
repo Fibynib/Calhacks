@@ -1,14 +1,11 @@
 import os
+
 os.environ["OPENAI_API_KEY"] = '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'
 
-from llama_index import (
-    VectorStoreIndex, 
-    SimpleDirectoryReader,
-    LLMPredictor,
-    ServiceContext
-)
-
 from langchain.chat_models import ChatOpenAI
+
+from llama_index import (LLMPredictor, ServiceContext, SimpleDirectoryReader,
+                         VectorStoreIndex)
 
 document = SimpleDirectoryReader('examples/paul_graham_essay/metamorphosis').load_data()
 document1 = SimpleDirectoryReader('examples/paul_graham_essay/empty').load_data()
